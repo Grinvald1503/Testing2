@@ -5,15 +5,30 @@ import java.util.Objects;
 public class User {
     private String login;
     private String email;
-
     public User() {
         this.login = "not login";
         this.email = "not email";
     }
 
     public User(String login, String email) {
-        this.login = login;
-        this.email = email;
+        if (login.equals(email)) {
+            throw new RuntimeException("Почта и логин не должны совпадать");
+        }
+        if (login == null || login.isEmpty()) {
+            this.login = "not login";
+        } else {
+            this.login = login;
+        }
+
+        if (email.contains("@") && email.contains(".")) {
+            this.email = email;
+        } else if (email == null || email.isEmpty()) {
+            this.login = "not email";
+        } else {
+            throw new RuntimeException("email указан неверно");
+        }
+
+
     }
 
     public String getLogin() {

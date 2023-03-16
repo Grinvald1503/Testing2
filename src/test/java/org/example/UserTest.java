@@ -22,13 +22,12 @@ public class UserTest {
     }
     @Test
     public void shouldCorrectValue () {
-        User user = new User(login, email);
-        Assertions.assertTrue(user.getEmail().contains("@") || user.getEmail().contains("."));
+        Assertions.assertThrows(RuntimeException.class, () -> new User(DEFAULT_VALUE_LOGIN, DEFAULT_VALUE_EMAIL));
     }
+
     @Test
     public void shouldEqualsParameters () {
-        User user = new User(login, email);
-        Assertions.assertNotEquals(user.getEmail(), user.getLogin());
+        Assertions.assertThrows(RuntimeException.class, () -> new User(DEFAULT_VALUE_LOGIN, DEFAULT_VALUE_LOGIN));
     }
 
 
